@@ -1,0 +1,74 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Zebra Pixel Tool</title>
+<style>
+.sp
+{
+background-color:green;
+}
+</style>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+ function CreateTable(rowCount,cellCount)
+ { 
+   $("#createtable").text("");
+   var table=$("<table id=\""+"vram_table"+"\"vram border=\"1\">");
+   table.appendTo($("#createtable"));
+   for(var i=0;i<rowCount;i++)
+   {
+    var tr=$("<tr></tr>");
+    tr.appendTo(table);
+   
+    for(var j=0;j<cellCount;j++)
+    {
+      
+      vram_address = (parseInt($("#vram_start").val()) + i*20+j).toString(16).toUpperCase();
+      var td=$("<td onClick=\"checkSelect($(this));\"class=\""+"pixel"+"\" id=\""+vram_address+"\">"+vram_address+"</td>");
+      td.appendTo(tr);
+    }
+   }
+  
+   $("#createtable").append("</table>");
+ }
+</script>
+</head>
+  
+<body>
+<h1>Zebra Pixel Tool</h1><hr>
+<input type="text" value="29456" id="vram_start">
+<input type="button" value="开始" onClick="CreateTable(12,20)" >
+<input type="button" value="生成mon" onClick="createMon();"  >
+<div id="createtable"></div>
+<div id="createrow"></div>
+
+<div id="mon_data"></div>
+</body>
+</html>
+
+<script>
+
+function checkSelect(o){
+
+	if(o.is('.pixel_select')){
+                     o.removeClass('pixel_select');
+		o.removeClass('sp');
+         	 }else{
+	     o.addClass('pixel_select');
+		o.addClass('sp');
+	}
+	
+}
+
+function createMon(){
+	
+	$("#mon_data").text("");
+
+	$('.pixel_select').each(function(i){ 
+		$("#mon_data").append($(this).attr('id') + ": 1F" +"<br>")
+	});
+
+
+}
+
+</script>
