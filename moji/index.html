@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="./moji/bulma-rtl.min.css">
+<link rel="stylesheet" href="./moji/bulma-pageloader.min.css">
+<title>Kanamoji</title>
+<html>
+    <script src="./moji/kuroshiro.js"></script>
+    <script src="./moji/kuroshiro-analyzer-kuromoji.js"></script>
+    <script src="./moji/kuromoji_local.js"></script>
+    <script src="./moji/jquery.js"></script>
+    <script>
+       
+        var kuroshiro = new Kuroshiro(); 
+        var moji = kuroshiro.init(new KuromojiAnalyzer({ dictPath: "./moji/dict" }));
+        var modeType = 'furigana';
+        var outputType = 'hiragana';
+        Promise.all([moji]).then(function(){
+          $('#loader1').removeClass('is-active');
+    })
+
+        function goNew(){
+            moji.then(function() {
+               
+                return kuroshiro.convert($('#writeArea').val(), { mode:modeType, to:outputType});
+            })
+            .then(function(result){
+                console.log(result);
+                $('#mainArea').html(result.replace(/\n/g,"<br>")); 
+                 
+            })
+        }
+
+        function menuModeChange(name){
+          $("#"+modeType).removeClass('is-active');
+          $("#"+name).addClass('is-active');
+          modeType = name;
+        }
+
+        function menuChange(name){
+          $("#"+outputType).removeClass('is-active');
+          $("#"+name).addClass('is-active');
+          outputType = name;
+        }
+
+    </script>
+    <body>
+
+      <div id='loader1' class="pageloader is-active is-light"><span class="title">お待ちください...</span></div>
+       
+      <div class="tabs is-centered">
+        <ul>
+          <span class="tag is-warning">模式</span>
+          <li class="menuPanelMode is-active" onclick="menuModeChange('furigana')" id="furigana"><a>ふFurigana</a></li>
+          <li class="menuPanelMode" onclick="menuModeChange('okurigana')" id="okurigana"><a>おOkurigana</a></li>
+          <li class="menuPanelMode" onclick="menuModeChange('normal')" id="normal"><a>Normal</a></li>
+          <li class="menuPanelMode" onclick="menuModeChange('spaced')" id="spaced"><a>Spaced</a></li>
+        </ul>
+      </div>
+      <div class="tabs is-centered">
+        <ul>
+          <span class="tag is-link">标注</span>
+          <li class="menuPanel is-active" onclick="menuChange('hiragana')" id="hiragana" ><a>ひHiragana</a></li>
+          <li class="menuPanel" onclick="menuChange('katakana')" id="katakana"><a>かKatakana</a></li>
+          <li class="menuPanel" onclick="menuChange('romaji')" id="romaji"><a>ろRomaji</a></li>
+        </ul>
+      </div>
+      <div class="block">
+        <button class="button is-medium is-fullwidth is-info is-light" onclick="goNew()">Go!</button>
+      </div>
+
+      <textarea class="textarea" placeholder="7 lines of textarea" rows="7" id="writeArea">
+        ある日突然大人たちから
+        「やってみないか?」って
+        言われて
+        どうするつもりだ?臆病者よ
+        今の僕たちじゃ無理だって
+        もちろんみんなわかってるよ
+        Ha
+      </textarea>
+
+
+        <div class="notification" id="mainArea">
+            
+          </div>
+          
+
+          <footer class="footer">
+            <div class="content has-text-centered">
+              <p>
+                @Earture
+              </p>
+            </div>
+          </footer>
+    </body>
+</html>
+
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?e7000ca1725e051b53b790d3ac50ec8b";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
