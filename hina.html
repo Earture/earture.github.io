@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="./moji/bulma-rtl.min.css">
-<link rel="stylesheet" href="./moji/bulma-pageloader.min.css">
-<title>Kanamoji</title>
+<link rel="stylesheet" href="./css/bulma-rtl.min.css">
+<link rel="stylesheet" href="./css/bulma-pageloader.min.css">
+<title>Hiragana</title>
 <html>
-    <script src="./moji/kuroshiro.js"></script>
-    <script src="./moji/kuroshiro-analyzer-kuromoji.js"></script>
-    <script src="./moji/kuromoji_local.js"></script>
-    <script src="./moji/jquery.js"></script>
+    <script src="./kuroshiro.js"></script>
+    <script src="./kuroshiro-analyzer-kuromoji_local.js"></script>
+    <script src="./kuromoji_local.js"></script>
+    <script src="./jquery.js"></script>
     <script>
        
         var kuroshiro = new Kuroshiro(); 
-        var moji = kuroshiro.init(new KuromojiAnalyzer({ dictPath: "./moji/dict" }));
+        var moji = kuroshiro.init(new KuromojiAnalyzer({ dictPath: "./dict" }));
         var modeType = 'furigana';
         var outputType = 'hiragana';
         Promise.all([moji]).then(function(){
@@ -41,6 +41,7 @@
           $("#"+outputType).removeClass('is-active');
           $("#"+name).addClass('is-active');
           outputType = name;
+          $("#"+name).attr(colorMode)
         }
 
     </script>
@@ -104,3 +105,4 @@
     s.parentNode.insertBefore(hm, s);
   })();
   </script>
+  

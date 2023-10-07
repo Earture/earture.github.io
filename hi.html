@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="./css/bulma-rtl.min.css">
+<title>Hiragana</title>
+<html>
+    <script src="./kuroshiro.js"></script>
+    <script src="./kuroshiro-analyzer-kuromoji_local.js"></script>
+    <script src="./kuromoji_local.js"></script>
+    <script src="./jquery.js"></script>
+    <script>
+        const kuroshiro = new Kuroshiro();
+        kuroshiro.init(new KuromojiAnalyzer({ dictPath: "./dict" }));
+        kuroshiro.convert("感じ取れたら手を繋ごう、重なるのは人生のライン and レミリア最高！", {mode:"okurigana", to:"hiragana"});
+
+    </script>
+    <body>
+        <button class="button is-link is-outlined">Outlined</button>
+        <textarea class="textarea is-info" placeholder="Info textarea"></textarea>
+
+        <div class="notification" id="mainArea">
+            
+          </div>
+    </body>
+</html>

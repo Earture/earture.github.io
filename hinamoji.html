@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="./css/bulma-rtl.min.css">
+<title>HinaMoji Beta</title>
+<html>
+    <!-- <script src="./kuroshiro.js"></script>
+    <script src="./kuroshiro-analyzer-kuromoji.js"></script> -->
+    <script src="./kuromoji_local.js"></script>
+    <script src="./jquery.js"></script>
+
+
+    <script>
+
+    kuromoji.builder({ dicPath: "./dict/" }).build(function (err, tokenizer) {
+    // tokenizer is ready
+    $('#mainInput').attr('placeholder','解析したい文字列を入力してください');
+        $(function(){  
+    　　    $('#mainInput').bind('input propertychange', function() {  
+        　　var path = tokenizer.tokenize($('#mainInput').val());
+            console.log(path);
+            var html = '';
+            $('#mainForm').html(html);
+				for ( var i = 0; i < path.length; i++) {//循环json对象，拼接tr,td的html
+					html = html + '<tr>';
+					html = html + '<td>' + path[i].surface_form + '</td>';
+					html = html + '<td>' + path[i].pos + '</td>';
+					html = html + '<td>' + path[i].pos_detail_1 + '</td>';
+					// html = html + '<td>' + path[i].pos_detail_2 + '</td>';
+					// html = html + '<td>' + path[i].pos_detail_3 + '</td>';
+					html = html + '<td>' + path[i].conjugated_type + '</td>';
+                    html = html + '<td>' + path[i].conjugated_form + '</td>';
+                    html = html + '<td>' + path[i].basic_form + '</td>';
+                    html = html + '<td>' + path[i].reading + '</td>';
+                    html = html + '<td>' + path[i].pronunciation + '</td>';
+					html = html + '</tr>';
+				}
+				$('#mainForm').html(html);
+    　　    });
+        }) 
+　　　});
+    </script>
+
+<div class="content">
+    <nav class="navbar is-light">
+        <div class="navbar-brand">
+          <h2>HinaMoji</h2>
+        </div>
+      </nav>
+     
+<form calss="form" id="form">
+        <label>解析対象
+        <input id="mainInput" class="input is-medium" type="text" placeholder="Loading...しばらくお待ちください">
+        </label>
+
+    <table>
+        <thead>
+        <tr>
+            <th>表層形</th>
+            <th>品詞</th>
+            <th>品詞細分類1</th>
+            <!-- <th>品詞細分類2</th>
+            <th>品詞細分類3</th> -->
+            <th>活用型</th>
+            <th>活用形</th>
+            <th>基本形</th>
+            <th>読み</th>
+            <th>発音</th>
+        </tr>
+        </thead>
+        <tbody id="mainForm">
+        </tbody>
+    </table>
+  
+  </form>
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>HinaMoji</strong> by @Earture</a>
+      </p>
+    </div>
+  </footer>
+  </div>
+
+</html>
