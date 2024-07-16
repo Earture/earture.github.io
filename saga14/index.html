@@ -1,0 +1,288 @@
+<!DOCTYPE html><html><head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  
+  
+  <title>  SSID的故事 |   凉天客栈 </title>
+
+ 
+  
+    <link rel="icon" href="/images/favicon.png">
+  
+
+
+  
+<link rel="stylesheet" href="/nayo.min.css">
+ 
+<meta name="generator" content="Hexo 7.3.0"></head>  
+  <body>   
+    
+      <header class="header">
+	
+  <nav class="header-nav">        
+   
+    <span class="iconfont icon-menu mobile-toggle"></span>   	
+
+    <div class="header-menu">          
+              
+            
+
+              <a class="header-menu-link" id="header-menu-Home" href="/">Home</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-Archives" href="/archives">Archives</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-Tags" href="/tags">Tags</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-Lab" href="/lab">Lab</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-About" href="/about">About</a>     
+
+            
+            
+            
+
+              <a class="iconfont icon-menu-search header-menu-link" id="header-menu-search"></a>
+
+            
+                
+    </div>  
+    
+  </nav>
+</header>   
+
+      <div class="container">       
+          
+          
+            <section class="main">  
+          
+
+          <article class="post">
+  
+	<div class="post-header">
+
+	<p class="post-title">	
+		SSID的故事
+	</p>
+			
+
+	<div class="meta-info">	
+	<span>
+		12月 16, 2018
+	</span>
+
+	
+	
+		<i class="iconfont icon-words"></i>
+		<span>
+			2379
+		</span>
+	
+</div>
+
+</div> 
+	 
+
+	  <div class="post-content slideDownMin">
+
+		
+
+			
+					<p>俗话说“古有凿壁偷光，今有隔墙蹭网”，当然今天看来“蹭网”这种行为也变得越来越落伍，wifi就像家用台式PC一样，只有下载大文件，或者干“重”活的时候才会有存在感，不过随着大数据时代的来临，wifi对于我们或许还有其他“有趣”的地方，无线信号虽然看不见摸不着，但是在那透明的世界却仍在诉说人间的故事。<span id="more"></span></p>
+<p>这个透明的世界中，“SSID”是主角，也就是我们自己家wifi的名称，wifi的不同名称其实可以解读出很多“有趣”的“事实”，下面我们一同开启SSID的故事</p>
+<p>既然要分析SSID，首先就是如何获取SSID，难道要把手机当成探测器，边走边看嘛？这样虽然也可以，但是不能实时记录下来，既没有效率也不优雅，所以我们要换一种符合美学的收集方式，考虑到现在很多微型开发板如树莓派都具备了wifi功能，我们可以利用树莓派等低功耗开发板搭建一个足够小巧，可以随身携带的SSID扫描记录仪，我们把这个工程命名为iW，意思是i world，毕竟我们要带着它搜集全世界的SSID（划去）</p>
+<p>于是随便选了一个类似树莓派的开发版，用充电宝供电即可，然后用3D打印机打印了一个外壳，大小正好可以放在背包中，这样就初步完成了iW的硬件制造，而软件方面，俗话说的好“天下代码一大抄”，上github上fork fork fork然后自己加工一下，就完成了软件编写，总之，iW最后实现的功能就是只要接上电源，系统就会不断扫描附近的wifi SSID，并把名字存储为文件。<br><img src="/saga14/1.jpg" alt="avatar"><br><img src="/saga14/2.jpg" alt="avatar"><br><img src="/saga14/3.jpg" alt="avatar"><br>俗话说得好“工欲善其事，必先利其器”，我们已经有了利器，那么马上开始做事吧。<br>于是带着iW出门，去附近的超市逛了一圈，其实并没有走多远的距离，大概来回一个小时，回来之后，把收集到的保存有SSID名称的文件导出一看，竟然收集到了1866条不重复的SSID名，要是钱就好了（划去），可见当今时代真是信息爆炸的年代，就连无线电空间也是这么拥挤与繁华</p>
+<p>好了，完成了SSID收集，下面就是信息整理与胡说八道（划去）的分析工作了，经过一系列极限操作，我们整理出了下图所示的内容：<br><img src="/saga14/4.jpg" alt="avatar"><br>首先，在收集的1866条SSID中，大部分都是英文名称，达到了1774条，只有很少一部分是中文，现在很多家用物联网智能家电都不支持中文SSID也真的是基于大数据的有恃无恐了，因为中文SSID的占比实在太低，这里面有兼容性的问题，也有用户习惯的原因。<br><img src="/saga14/5.jpg" alt="avatar"><br>下面我们先来看英文SSID，在英文SSID中我们可以看出ChinaNet、CU开头的SSID占比相当高，而这是电信、联通等宽带运营商光猫自带的SSID格式，说明很多宽带用户并没有使用自己购买的路由器，而是直接用光猫自带的wifi，而且还是连SSID名称也没有修改，光猫路由器功能阉割非常严重，所以这类用户一般都是对端口映射，科学上网，广告屏蔽等路由器高级功能没有迫切需求的用户，一切以方便为主，可能连更改无线密码的次数也很少，有的时候，不折腾才是大彻大悟的人生真谛！<br><img src="/images/placeholder.png" alt="avatar" data-src="/saga14/6.jpg" class="lazyload"><br>之后我们会发现，还有相当数量以TP-LINK等路由器厂家名称开头的SSID，这类用户虽然购买了路由器，但是却不拘小节，并没有对路由器SSID进行定制，穿墙的需求应该在这类用户中占有很大的比重，不过，再强的路由器也硬不过水泥，大户型的朋友还是铺设网线组mesh方可一劳永逸。在以路由器厂家名称开头的SSID中，以TP-LINK的占比最为突出，看来正如蓝绿大厂，家用无线路由器的老牌企业的市场占有确实可怕。<br><img src="/images/placeholder.png" alt="avatar" data-src="/saga14/7.jpg" class="lazyload"><br>之后，我们来看一下其他这一大类，其中多数是自定义的wifi名称，因为wifi名称经过自定义，所以我们看不出到底是哪家的路由器设备，甚至软路由都有可能，值得一说的是其中包含一些以Guest开头的SSID，这类SSID往往都是使用了有访客网络功能的路由器，并开启了访客wifi功能，说实话，访客网络虽然安全，却不人性化，谁让我们都喜欢当家作主当社会主义接班人呢？另外我们发现，也有很多以CarDV等开头的物联网设备，其中以行车记录仪的数量最多，不得不说，防止碰瓷和揭开真相，行车记录仪自称第二，没有人敢称第一。最后，在这些自定义SSID名称中，多数为拼音和英语单词，不过很少有有意义的英语短句，在收集到的1774个英文SSID中，我们选出了最佳SSID，那就是“Do not mess me !!!”,多么希望是“Do not miss me”，看来死宅不配拥有回忆（划去）<br><img src="/images/placeholder.png" alt="avatar" data-src="/saga14/8.jpg" class="lazyload"><br>说完了英文SSID，我们来看一下中文SSID，虽然数量稀少，但是内容也很无聊啊，多数中文SSID都是各自商家的招牌，当然也不乏如“亲下就告诉你”、“速来跪舔我”等拥有迫切生理需求的调侃SSID，而在中文SSID中，我们也评出了最佳SSID，那就是“初夏”，如果我有一套四室两厅的房子，我会在每个屋子里放一个路由器，她们的SSID分别是早春、初夏、中秋与深冬，在客厅用iW扫描仪歌颂这季风的神奇（整段划去）。<br><img src="/images/placeholder.png" alt="avatar" data-src="/saga14/9.jpg" class="lazyload"><br>当然以上分析具有很高的主观性，且样本较少，文章内所用图片仅仅截取了收集到数据的一小部分，总之iW项目不具备任何相关暗示，仅供娱乐。</p>
+<p>好了，SSID的故事我们未完待续，但是还有One more thing要送给大家。</p>
+<p>说到“外国人为什么这么少”这个调侃的话题，大家一定会想起各种作死视频，但是“作死”只是探索的一个角落，一个国家与民族拥有好奇心与探索的勇气是多么难能可贵，探索其实并不一定是多么高端，我们可能不会训练神经网路，也不能回收火箭，甚至可能一不小心就上了下个月的傻缺视频，但是我想说，喜欢数码产品的我们，一定是怀有一颗探索之心的，当我们体验一件件新奇的产品的同时，我们其实就是在探索，这次的iW项目的想法由来已久，用了一个周末的时间制作出了iW初号机，并初步收集到了一些微小的数据，可能看上去并没有什么用，但正如撕下新机贴膜那一刻，好奇心与探索带来的快乐却是每个人都不会拒绝的享受。</p>
+  	
+					
+	  </div>     
+	  
+
+	
+<div class="post-meta">
+      
+        <i class="iconfont icon-category"></i>       
+        <a class="category-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a> 	
+     
+      	
+
+      
+        <i class="iconfont icon-tag"></i>     
+          <a class="tag-none-link" href="/tags/%E6%80%9D%E8%80%83/" rel="tag">思考</a> <a class="tag-none-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a>    
+      	
+</div>
+
+
+
+
+
+<div class="post-footer">
+  <div class="pf-left">
+      <img class="pf-avatar lazyload" src="/images/placeholder.png" data-src="/images/header.jpg">
+      <p class="pf-des">欢迎来到凉天客栈！</p>
+  </div>
+
+  <div class="pf-right">           
+      <div class="pf-links">
+         
+        
+	
+<script id="-mob-share" src="https://f1.webshare.mob.com/code/mob-share.js?appkey=25e6aaa1be46c"></script>
+	
+	<span class="share-btn">
+	<span class="iconfont icon-share"></span>
+	</span>
+
+
+	<div class="-mob-share sildeUpMin">
+		   			             
+            <a class="iconfont  icon-share-qq -mob-share-qq"></a>		
+     	   			             
+            <a class="iconfont  icon-share-weixin -mob-share-weixin"></a>		
+     	   			             
+            <a class="iconfont  icon-share-weibo -mob-share-weibo"></a>		
+     	   			             
+            <a class="iconfont  icon-share-douban -mob-share-douban"></a>		
+     	   			             
+            <a class="iconfont  icon-share-facebook -mob-share-facebook"></a>		
+     	   			             
+            <a class="iconfont  icon-share-twitter -mob-share-twitter"></a>		
+     	   			             
+            <a class="iconfont  icon-share-google -mob-share-google"></a>		
+     	   
+	</div>	
+
+      </div>  
+    <nav class="pf-paginator">
+      
+         
+          <a href="/saga15/" data-hover="前程似锦">上一篇</a>      
+            
+        
+      
+        
+        <a href="/saga13/" data-hover="何为人间？--《小偷家族》简评"> 下一篇</a>
+            
+  </nav>   
+  </div>
+</div> 
+	
+	
+</article>
+
+          </section> 
+      </div>            
+    
+    <a id="backTop">
+      <span>
+        <i class="iconfont icon-backtotop"></i>
+      </span>
+    </a> 
+
+  
+    
+    <div class="search-container sildeUpMin">
+        <div class="search-header">
+            <input type="text" placeholder="输入你想搜索的" id="search-input" class="search-input">  
+            <span class="search-cancel iconfont icon-cancel"></span>
+        </div>
+        <div id="search-result" class="search-result"></div>
+    </div>
+ 
+     <div class="mobile-menu">      
+
+      
+      <img class="mobile-menu-icon lazyload" src="/images/placeholder.png" data-src="/images/favicon.png">   
+      
+
+         
+            
+
+            <a class="mobile-menu-link" href="/">Home
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/archives">Archives
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/tags">Tags
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/lab">Lab
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/about">About
+            </a>
+            
+         
+                          
+
+            <a class="mobile-menu-link mobile-menu-search" href="#">搜索 </a>                 
+            
+         
+      
+</div>        
+    
+
+
+
+     
+    
+
+
+
+
+<footer id="footer">	    
+
+		
+		<div class="footer-copyright">
+		©
+				
+		2018-
+		
+		2024		
+	
+		Earture
+		<br>
+
+		Theme By
+		<a href="https://github.com/Lemonreds/hexo-theme-Nayo" target="_blank">Nayo</a>	
+		</div>			
+	 
+</footer>   
+
+  
+
+    
+<script src="/nayo.bundle.js"></script>
+           
+          
+</body></html>
