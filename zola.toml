@@ -29,7 +29,7 @@ theme = "auto"
 socials = [
   # Configure socials here
   { name = "github", url = "https://github.com/earture", icon = "github" },
-  { name = "x", url = "https://github.com/earture", icon = "x-twitter" },
+  { name = "x", url = "https://x.com/Earture", icon = "x-twitter" },
 
 ]
 menu = [
