@@ -7,12 +7,6 @@
         </section>
     </article>
 </main>
-{% endmacro home_page %} {% block main_content %} {{
-self::home_page(section=section) }}
 
-<h1>Recent articles</h1>
-<main class="post-list">
-    {% set section = get_section(path="posts/_index.md") %} {{
-    post_macros::list_posts(pages=section.pages | slice(end=5)) }}
-</main>
-{% endblock main_content %}
+{% endmacro home_page %} {% block main_content %} {{
+self::home_page(section=section) }} {% endblock main_content %}

@@ -24,7 +24,21 @@ default(value="right") %} {% set character_image = image | default(value="") %}
         {% elif character_name == "kokoro-1" %}
         <img
             src="{{ get_url(path = 'images/characters/kokoro-1.png') }}"
-            alt="hooded"
+            alt="kokoro-1"
+            width="80"
+            height="80"
+        />
+        {% elif character_name == "kokoro-uta" %}
+        <img
+            src="{{ get_url(path = 'images/characters/kokoro-uta.png') }}"
+            alt="kokoro-1"
+            width="80"
+            height="80"
+        />
+        {% elif character_name == "kokoro-dance" %}
+        <img
+            src="{{ get_url(path = 'images/characters/kokoro-dance.png') }}"
+            alt="kokoro-1"
             width="80"
             height="80"
         />
