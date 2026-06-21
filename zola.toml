@@ -1,0 +1,45 @@
+# The URL the site will be built for
+base_url = "https://earture.org"
+theme = "apollo"
+title = "Earture's Blog"
+taxonomies = [{ name = "tags" }]
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = true
+
+
+[search]
+include_title = true
+include_description = true
+include_path = true
+include_content = true
+index_format = "elasticlunr_json"
+
+[markdown]
+
+[markdown.highlighting]
+theme = "catppuccin-mocha"
+
+[extra]
+# Put all your custom variables here
+theme = "auto"
+socials = [
+  # Configure socials here
+  { name = "github", url = "https://github.com/earture", icon = "github" },
+  { name = "x", url = "https://github.com/earture", icon = "x-twitter" },
+]
+menu = [
+  # Configure menu bar here
+  { name = "/posts", url = "/posts", weight = 1 },
+  { name = "/projects", url = "/projects", weight = 2 },
+  { name = "/about", url = "/about", weight = 3 },
+  { name = "/tags", url = "/tags", weight = 4 },
+]
+
+toc = true
+use_cdn = false
+fancy_code = true
+dynamic_note = true
