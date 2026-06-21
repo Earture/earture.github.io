@@ -20,7 +20,4 @@ GitHub: https://github.com/earture
 
 X: https://x.com/earture
 
-# 版权说明
-
-除特别注明外，本站原创内容均可在注明出处的前提下转载。
-感谢你的来访。
+{{ character(name="hooded", body="除特别注明外，本站原创内容均可在注明出处的前提下转载。感谢你的来访。") }}
