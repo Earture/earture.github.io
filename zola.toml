@@ -1,7 +1,7 @@
 # The URL the site will be built for
 base_url = "https://earture.org"
 theme = "apollo"
-title = "Earture's Blog"
+title = "涼天客棧 ｜ Earture's Blog"
 taxonomies = [{ name = "tags" }]
 
 # Whether to automatically compile all Sass files in the sass directory
@@ -30,6 +30,7 @@ socials = [
   # Configure socials here
   { name = "github", url = "https://github.com/earture", icon = "github" },
   { name = "x", url = "https://github.com/earture", icon = "x-twitter" },
+
 ]
 menu = [
   # Configure menu bar here
@@ -37,9 +38,11 @@ menu = [
   { name = "/projects", url = "/projects", weight = 2 },
   { name = "/about", url = "/about", weight = 3 },
   { name = "/tags", url = "/tags", weight = 4 },
+  { name = "/talks", url = "/talks", weight = 5 }
 ]
 
 toc = true
 use_cdn = false
 fancy_code = true
 dynamic_note = true
+mathjax = true
