@@ -5,6 +5,9 @@ path = "about"
 
 # 关于我
 
+>“菊花开时乃重阳，凉天佳月即中秋，不须以日月为断也。” 
+>苏轼《江月五首·并引》
+
 Earture = Ear（ear） + ture（Nature） 自然的耳朵，倾听与思考
 虽热听起来有些中二，因为是初中的时候自己取的名字，之前曾用过nacile，至于为什么，连自己也忘记了。
 
@@ -13,7 +16,7 @@ Earture = Ear（ear） + ture（Nature） 自然的耳朵，倾听与思考
 有时是技术笔记，有时是旅行见闻，有时只是一些尚未成熟的思考。
 
 # 关于看板娘
-原型 浅野こころ
+原型 [浅野こころ](https://x.com/korokorococoroo)
 
 # 联系我
 Email: amehinou@gmail.com
