@@ -1,1 +1,19 @@
+# macOS
+
 .DS_Store
+
+# Zola
+
+public/
+
+# Editors
+
+.vscode/
+
+.idea/
+
+# Temporary
+
+*.swp
+
+*.tmp
