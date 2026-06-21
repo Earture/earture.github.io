@@ -12,6 +12,8 @@ Earture = Ear（ear） + ture（Nature） 自然的耳朵，倾听与思考
 这里没有固定主题。
 有时是技术笔记，有时是旅行见闻，有时只是一些尚未成熟的思考。
 
+# 关于看板娘
+原型 浅野こころ
 
 # 联系我
 Email: amehinou@gmail.com
@@ -20,4 +22,4 @@ GitHub: https://github.com/earture
 
 X: https://x.com/earture
 
-{{ character(name="hooded", body="除特别注明外，本站原创内容均可在注明出处的前提下转载。感谢你的来访。") }}
+{{ character(name="kokoro-1", body="除特别注明外，本站原创内容均可在注明出处的前提下转载。感谢你的来访。") }}

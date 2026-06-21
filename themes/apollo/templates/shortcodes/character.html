@@ -1,24 +1,34 @@
-{% set character_name = name | default(value="hooded") %}
-{% set character_text = body | default(value="") %}
-{% set character_type = type | default(value="comment") %}
-{% set character_position = position | default(value="right") %}
-{% set character_image = image | default(value="") %}
+{% set character_name = name | default(value="hooded") %} {% set character_text
+= body | default(value="") %} {% set character_type = type |
+default(value="comment") %} {% set character_position = position |
+default(value="right") %} {% set character_image = image | default(value="") %}
 
-<div class="character-note character-{{ character_name }} character-{{ character_type }} character-{{ character_position }}">
+<div
+    class="character-note character-{{ character_name }} character-{{ character_type }} character-{{ character_position }}"
+>
     <div class="character-avatar">
         {% if character_image and character_image != "" %}
-            <img src="{{ get_url(path = 'images/characters/' ~ character_image) }}"
-                 alt="{{ character_name }}"
-                 width="80"
-                 height="80" />
+        <img
+            src="{{ get_url(path = 'images/characters/' ~ character_image) }}"
+            alt="{{ character_name }}"
+            width="80"
+            height="80"
+        />
         {% elif character_name == "hooded" %}
-            <img src="{{ get_url(path = 'images/characters/hooded.png') }}"
-                 alt="hooded"
-                 width="80"
-                 height="80" />
-        {% else %}
-            {{ character_name }}
-        {% endif %}
+        <img
+            src="{{ get_url(path = 'images/characters/hooded.png') }}"
+            alt="hooded"
+            width="80"
+            height="80"
+        />
+        {% elif character_name == "kokoro-1" %}
+        <img
+            src="{{ get_url(path = 'images/characters/kokoro-1.png') }}"
+            alt="hooded"
+            width="80"
+            height="80"
+        />
+        {% else %} {{ character_name }} {% endif %}
     </div>
     <div class="character-content">
         <div class="character-bubble">

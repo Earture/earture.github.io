@@ -24,3 +24,7 @@ template = "home.html"
     <h1 class="homepage-hero-title">Earture</h1>
     <p class="homepage-hero-subtitle">Stay curious, explore widely, listen deeply, think independently.</p>
 </div>
+
+
+
+{{ character(body="你好！我是本站看板娘心酱，我会在某些文章中给出相关延伸介绍与吐槽，请多关照！", position="left", image="kokoro-1.png") }}
