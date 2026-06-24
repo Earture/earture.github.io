@@ -1,5 +1,5 @@
 +++
-title = "属于中国人的"复古"计算机时代存在吗？｜ The Retro Age We Never Had"
+title = "属于中国人的'复古'计算机时代存在吗？｜ The Retro Age We Never Had"
 date = "2019-11-12"
 [taxonomies]
 tags=["Notes"]
