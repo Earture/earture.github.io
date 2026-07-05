@@ -1,5 +1,5 @@
 +++
-title = "鱼饵｜ The Story of SSID"
+title = "鱼饵｜ The Bait"
 date = "2021-07-03"
 [taxonomies]
 tags=["Notes"]
@@ -11,7 +11,7 @@ tags=["Notes"]
 >不全是高兴的事喲
 >作为普通人，不是也一样吗
 >说的也是啊
-
+<!-- more -->
 <video width=100% height=100% id="video" controls="" preload="none" poster="/images/miho.png" >
 <source id="mp4" src="https://earture.org:7000/saga25/watanabe_miho_pv.mp4" type="video/mp4"></video>
 <h4 align="center">渡邉美穂　个人PV</h4>
