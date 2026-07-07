@@ -22,7 +22,7 @@ template = "home.html"
 
 <div class="homepage-hero">
     <h1 class="homepage-hero-title">Earture</h1>
-    <p class="homepage-hero-subtitle">Stay curious, explore widely, listen deeply, think independently.一个始终对世界保持好奇的人，喜欢站在主流叙事的边缘观察人群，不急于寻找标准答案，却执着于追问事物为何如此。更像一个路过不同世界的人，而不是属于某一个世界的人。</p>
+    <p class="homepage-hero-subtitle">Stay curious, explore widely, listen deeply, think independently。涼天佳月即中秋，此心安處是吾鄉。</p>
 </div>
 
 
