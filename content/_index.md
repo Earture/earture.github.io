@@ -22,7 +22,7 @@ template = "home.html"
 
 <div class="homepage-hero">
     <h1 class="homepage-hero-title">Earture</h1>
-    <p class="homepage-hero-subtitle">Stay curious, explore widely, listen deeply, think independently。涼天佳月即中秋，此心安處是吾鄉。</p>
+    <p class="homepage-hero-subtitle">Stay curious, explore widely, listen deeply, think independently。<br>涼天佳月即中秋，此心安處是吾鄉。</p>
 </div>
 
 
