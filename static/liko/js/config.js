@@ -5,7 +5,7 @@
 window.LikoConfig = {
   /* 资源版本号：改了 styles.css / js/*.js 之后，把这里和 index.html 里的 ?v= 一起改，
      这样浏览器和 CDN 都会重新拉取，不会用旧版本。 */
-  version: '1.1.0',
+  version: '1.1.2',
 
   /* 数据源列表：按顺序尝试，第一个成功的就用它。
      每一项可以是字符串 URL，也可以是 { name, url }。

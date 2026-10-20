@@ -221,6 +221,7 @@ function linkifyTimestamps(html, url, bvid, part) {
   const p = Number(part) > 1 ? `p=${Number(part)}&` : '';
   return html.replace(/(\d{1,2}):(\d{2})(?::(\d{2}))?/g, (m, h, mnt, s) => {
     const seconds = (Number(h) || 0) * 3600 + Number(mnt) * 60 + (s ? Number(s) : 0);
+    // App 深链接的 p 不被识别（多 P 只定位 P1），提示文字在卡片下方的 app-hint 里
     const app = bvid
       ? ` data-app="bilibili://video/${escapeHtml(bvid)}?${p}start_progress=${seconds * 1000}"`
       : '';
@@ -251,13 +252,22 @@ function render(results) {
 
     const kw = (r.matched || []).map((k) => `<span>${escapeHtml(k)}</span>`).join('');
 
-    /* 手机端：时间戳按钮优先唤起 B 站 App（App 未安装时自动回退到网页） */
-    const appAttr = r.appLink ? ` data-app="${escapeHtml(r.appLink)}"` : '';
-    const appLink = r.appLink
-      ? `<a class="app-link" href="${escapeHtml(r.appLink)}" title="在 B 站 App 中打开">
-           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 8h8M8 12h8" stroke="currentColor" stroke-width="2"/></svg>
-           App 打开
-         </a>`
+    /* 手机端：时间戳按钮优先唤起 B 站 App（App 未安装时自动回退到网页）
+       多 P：App 深链接只定位 P1，按钮下面提示"手动切到对应 P 后再点一次" */
+    const deep = typeof r.appLink === 'string' && r.appLink.startsWith('bilibili://');
+    const appAttr = deep ? ` data-app="${escapeHtml(r.appLink)}"` : '';
+    const partLabel = r.partLabel || `P${r.part}`;
+    const appHint = deep && Number(r.part) > 1
+      ? `<span class="app-hint">多 P 视频：App 深链接只能定位 P1，打开后手动切到 ${escapeHtml(partLabel)}，再返回点击一次时间戳即可定位</span>`
+      : '';
+    const appLink = deep
+      ? `<span class="app-open">
+           <a class="app-link" href="${escapeHtml(r.appLink)}" title="在 B 站 App 中打开">
+             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 8h8M8 12h8" stroke="currentColor" stroke-width="2"/></svg>
+             App 打开
+           </a>
+           ${appHint}
+         </span>`
       : '';
 
     return `
@@ -293,7 +303,8 @@ resultsEl.addEventListener('click', (e) => {
 
   const app = a.dataset.app;
   const web = a.href;
-  if (!app) return;
+  // 只有真正的 App 深链接才尝试唤起，其它（多 P 网页链接）正常打开
+  if (!app || !app.startsWith('bilibili://')) return;
 
   e.preventDefault();
   try {

@@ -149,7 +149,12 @@ function buildUrl(base, seconds, part) {
   return `${url}${sep}t=${seconds}&start_progress=${seconds * 1000}`;
 }
 
-/** 手机端唤起 B 站 App 的深链接 */
+/**
+ * 手机端唤起 B 站 App 的深链接。
+ * 实测：B 站 App 深链接里的 p 不被识别，多 P 视频只会定位到 P1；
+ * 但唤起 App 后手动切到对应 P，再点一次时间戳就能正确定位。
+ * 所以多 P 仍然生成深链接（带 p 以便将来支持），前端在按钮下面给出提示。
+ */
 function buildAppUrl(bvid, seconds, part) {
   if (!bvid) return '';
   const q = [];
