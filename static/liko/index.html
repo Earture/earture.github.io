@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="liko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LikoLiko · 虚拟主播名场面搜索引擎</title>
+  <meta name="description" content="索引虚拟主播直播转录中的直播总结、名场面与辛辣锐评，点击时间戳直达 B 站对应片段。" />
+
+  <!-- 静态托管缓存说明：
+       ?v=1.0.0 是资源版本号。改了 styles.css / js/*.js 之后把 1.0.0 改成 1.0.1，
+       浏览器和 CDN 就会重新获取（也可以删掉 ?v= 让托管服务用默认缓存策略）。
+       数据 JSON 每次都带 ?t=时间戳 + cache: no-store，不会拿到旧版本。 -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <link rel="stylesheet" href="./styles.css?v=1.0.0" />
+  <link rel="icon" href="./assets/liko.png" />
+</head>
+<body>
+  <div class="ambient" aria-hidden="true">
+    <div class="orb orb-a"></div>
+    <div class="orb orb-b"></div>
+  </div>
+
+  <header class="topbar">
+    <div class="brand">
+      <img id="logo" class="logo" src="./assets/liko.png" alt="LikoLiko logo" />
+      <span class="wordmark">Liko<em>Liko</em></span>
+    </div>
+
+    <div class="theme-switch" role="group" aria-label="配色切换">
+      <button class="theme-opt is-active" data-theme-value="liko" aria-pressed="true">Liko</button>
+      <button class="theme-opt" data-theme-value="kloa" aria-pressed="false">Kloa</button>
+      <span class="theme-thumb" aria-hidden="true"></span>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div class="hero-logo-wrap">
+        <img id="hero-logo" class="hero-logo" src="./assets/liko.png" alt="LikoLiko · 虚拟主播名场面搜索" />
+      </div>
+      <p class="hero-sub">直播总结 · 名场面 · 辛辣锐评，点击时间戳直接跳转到 B 站对应片段</p>
+    </section>
+
+    <form class="search" id="search-form" autocomplete="off">
+      <div class="search-box">
+        <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2" />
+          <path d="M15.4 15.4 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+        <input id="q" name="q" type="search" placeholder="关键词，例如 牛蛙 / 剧本杀 / 克罗雅" aria-label="搜索关键词" />
+        <button type="submit" class="search-go">搜索</button>
+      </div>
+      <div class="suggest" id="suggest" hidden></div>
+    </form>
+
+    <div class="filters">
+      <div class="filter-group" id="type-filters" aria-label="片段类型"></div>
+      <div class="filter-group" id="streamer-filters" aria-label="主播"></div>
+    </div>
+
+    <div class="loading" id="loading" hidden>
+      <div class="loading-head">
+        <span class="loading-spin" aria-hidden="true"></span>
+        <span id="loading-text">正在加载直播数据…</span>
+      </div>
+      <div class="loading-bar" role="progressbar" aria-label="加载进度">
+        <span class="loading-fill" id="loading-fill"></span>
+      </div>
+      <div class="loading-actions">
+        <button class="ghost-btn" id="loading-retry" hidden>重试</button>
+      </div>
+    </div>
+
+    <div class="status" id="status">
+      <span class="status-dot"></span>
+      <span id="status-text">正在加载索引…</span>
+      <button class="ghost-btn" id="refresh-btn">重新加载数据</button>
+    </div>
+
+    <section class="results" id="results" aria-live="polite"></section>
+
+    <div class="empty" id="empty" hidden>
+      <p>没有匹配的结果。换个关键词，或去掉筛选试试。</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <span id="footer-stats">数据源：—</span>
+    <span class="footer-sep">·</span>
+    <span id="footer-updated">—</span>
+  </footer>
+
+  <!-- 数据源配置：只改这一个文件就能换 JSON 地址 -->
+  <script src="./js/config.js?v=1.0.0"></script>
+  <script src="./js/parser.js?v=1.0.0"></script>
+  <script src="./js/search.js?v=1.0.0"></script>
+  <script src="./js/app.js?v=1.0.0"></script>
+</body>
+</html>
