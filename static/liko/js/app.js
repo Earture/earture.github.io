@@ -215,12 +215,15 @@ function webTsHref(url, seconds) {
   return `${url}${sep}t=${seconds}&start_progress=${seconds * 1000}`;
 }
 
-/* 把正文里的时间戳自动变成可点击的跳转 */
-function linkifyTimestamps(html, url, bvid) {
+/* 把正文里的时间戳自动变成可点击的跳转（多 P 视频必须带 p，否则落在 P1） */
+function linkifyTimestamps(html, url, bvid, part) {
   if (!url) return html;
+  const p = Number(part) > 1 ? `p=${Number(part)}&` : '';
   return html.replace(/(\d{1,2}):(\d{2})(?::(\d{2}))?/g, (m, h, mnt, s) => {
     const seconds = (Number(h) || 0) * 3600 + Number(mnt) * 60 + (s ? Number(s) : 0);
-    const app = bvid ? ` data-app="bilibili://video/${escapeHtml(bvid)}?start_progress=${seconds * 1000}"` : '';
+    const app = bvid
+      ? ` data-app="bilibili://video/${escapeHtml(bvid)}?${p}start_progress=${seconds * 1000}"`
+      : '';
     return `<a class="inline-ts"${app} href="${escapeHtml(webTsHref(url, seconds))}" target="_blank" rel="noopener">${m}</a>`;
   });
 }
@@ -263,9 +266,10 @@ function render(results) {
           <span class="tag tag-${r.type}">${escapeHtml(r.tagLabel)}</span>
           <span class="streamer">${escapeHtml(r.streamer)}</span>
           ${r.date ? `<span class="date">${escapeHtml(r.date)}</span>` : ''}
+          ${r.partLabel ? `<span class="part">${escapeHtml(r.partLabel)} / ${r.parts}P</span>` : ''}
         </div>
         <h3 class="card-title">${highlight(r.title || '', r.matched)}</h3>
-        <p class="card-snippet">${linkifyTimestamps(highlight(r.snippet || '', r.matched), r.url, r.videoId)}</p>
+        <p class="card-snippet">${linkifyTimestamps(highlight(r.snippet || '', r.matched), r.url, r.videoId, r.part)}</p>
         <div class="card-meta">
           <a class="ts-link"${appAttr} href="${escapeHtml(r.link)}" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
@@ -340,7 +344,7 @@ function hideProgress() {
 /* 浏览器端解析 + 建索引，全程带进度提示 */
 async function buildLocalIndex() {
   try {
-    const reports = await loadReports();
+    const reports = LikoParser.dedupeReports(await loadReports()); // 多 P 数据同一视频多条记录，按 bvid+part 去重
     setProgress(1, '数据下载完成，正在解析…');
     await sleep(80);
 

@@ -74,6 +74,18 @@ sources: [
 - `report` 里的三段标题（`## 一、直播内容详细总结` / `## 二、精彩亮点 / 名场面` / `## 三、辛辣锐评`）决定标签类型。
 - 如果顶层不是数组而是 `{ "data": [...] }` 这类包装，会自动尝试 `data / reports / items / list / results / records` 字段。要加别的字段名，改 `config.js` 里的 `dataKeys`。
 
+### 多 P 视频
+
+分 P 视频在数组里每个 P 一条记录，用 `part` / `parts` 区分：
+
+```json
+{ "bvid": "BV1WYnc6wEjp", "url": "https://www.bilibili.com/video/BV1WYnc6wEjp?p=2", "part": 2, "parts": 2, "duration": 1375, "report": "…" }
+```
+
+- 没有 `part` 字段时，会从 `url` 里的 `?p=` 推断；都没有则按 P1 处理。
+- `report` 里的时间戳是相对于所属 P 的，跳转会自动带上 `p=`，不会落在 P1。
+- 同一 `bvid + part` 的记录只会索引一次（`duplicate` 标记的重复行会被跳过）。
+
 ## 3. 避免拿到缓存的旧版本
 
 **数据 JSON** 默认每次都重新获取：

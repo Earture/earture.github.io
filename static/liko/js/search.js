@@ -247,7 +247,7 @@ class SearchIndex {
     for (const d of this.docs) {
       streamers.set(d.streamer, (streamers.get(d.streamer) || 0) + 1);
       types.set(d.type, (types.get(d.type) || 0) + 1);
-      videos.add(d.videoId);
+      videos.add(`${d.videoId}|${d.part || 1}`);
     }
     return {
       streamers: [...streamers.entries()].sort((a, b) => b[1] - a[1]).map(([name, count]) => ({ name, count })),
@@ -322,6 +322,9 @@ function toResult(r, terms) {
     url: doc.videoUrl,
     link: doc.link,
     appLink: doc.appLink,
+    part: doc.part || 1,
+    parts: doc.parts || 1,
+    partLabel: doc.partLabel || null,
     startMs: doc.start === null || doc.start === undefined ? null : doc.start * 1000,
     streamer: doc.streamer,
     english: doc.english,

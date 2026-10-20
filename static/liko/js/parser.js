@@ -22,6 +22,7 @@ const ENTRY_RE = new RegExp(
   '^(?:\\d+\\.\\s*)?(?:\\[(' + TS + ')(?:\\s*' + DASH + '\\s*(' + TS + '))?\\]|(' + TS + ')(?:\\s*' + DASH + '\\s*(' + TS + '))?)[：:]?\\s*(.*)$'
 );
 const HEADER_RE = /^#{1,4}\s+(.*)$/;
+const PART_PARAM_RE = /[?&]p=/i; // 链接里已有的分 P 参数
 
 const TAG_LABELS = {
   summary: '直播总结',
@@ -132,21 +133,40 @@ function extractDate(report) {
 }
 
 /**
- * 网页链接：t 是秒（PC 端），start_progress 是毫秒（B 站 App 识别）
- *   https://www.bilibili.com/video/BVxxx?t=91&start_progress=91590
+ * 网页链接：p 是分 P 的序号（1 起），t 是秒（PC 端），start_progress 是毫秒（B 站 App 识别）
+ *   https://www.bilibili.com/video/BVxxx?p=2&t=91&start_progress=91590
  */
-function buildUrl(base, seconds) {
+function buildUrl(base, seconds, part) {
   if (!base) return base;
-  if (seconds === null || seconds === undefined) return base;
-  const sep = base.includes('?') ? '&' : '?';
-  return `${base}${sep}t=${seconds}&start_progress=${seconds * 1000}`;
+  let url = base;
+  // 数据里的 url 可能没有 ?p=，多 P 视频必须显式指定分 P，否则跳转落在 P1
+  if (part > 1 && !PART_PARAM_RE.test(url)) {
+    const sep = url.includes('?') ? '&' : '?';
+    url = `${url}${sep}p=${part}`;
+  }
+  if (seconds === null || seconds === undefined) return url;
+  const sep = url.includes('?') ? '&' : '?';
+  return `${url}${sep}t=${seconds}&start_progress=${seconds * 1000}`;
 }
 
 /** 手机端唤起 B 站 App 的深链接 */
-function buildAppUrl(bvid, seconds) {
+function buildAppUrl(bvid, seconds, part) {
   if (!bvid) return '';
-  const q = seconds === null || seconds === undefined ? '' : `?start_progress=${seconds * 1000}`;
-  return `bilibili://video/${bvid}${q}`;
+  const q = [];
+  if (part > 1) q.push(`p=${part}`);
+  if (seconds !== null && seconds !== undefined) q.push(`start_progress=${seconds * 1000}`);
+  return `bilibili://video/${bvid}${q.length ? `?${q.join('&')}` : ''}`;
+}
+
+/**
+ * 分 P 信息：新数据每个 P 一条记录（part / parts）。
+ * 老数据没有这两个字段时，从 url 里的 ?p= 推断，默认 P1。
+ */
+function resolvePart(report) {
+  const fromUrl = Number((String(report.url || '').match(/[?&]p=(\d+)/i) || [])[1]) || 1;
+  const part = Number(report.part) > 0 ? Number(report.part) : fromUrl;
+  const parts = Number(report.parts) > 0 ? Number(report.parts) : Math.max(part, 1);
+  return { part, parts };
 }
 
 /**
@@ -199,19 +219,23 @@ function parseReport(report, knownNames) {
   const streamer = extractStreamer(report, knownNames);
   const date = extractDate(report);
   const aliases = parseNameFixes(report.name_fixes);
+  const { part, parts } = resolvePart(report);
 
   for (const seg of segments) {
     seg.videoId = report.bvid || '';
     seg.videoTitle = report.title || '';
-    seg.videoUrl = report.url || '';
+    seg.videoUrl = buildUrl(report.url, null, part); // 基础链接也带 p，多 P 时点开不会落在 P1
     seg.streamer = streamer;
     seg.uploader = report.streamer_name || '';
     seg.english = report.english || '';
     seg.date = date;
     seg.duration = report.duration || null;
+    seg.part = part;
+    seg.parts = parts;
+    seg.partLabel = part > 1 ? `P${part}` : null;
     seg.aliases = aliases;
-    seg.link = buildUrl(report.url, seg.start);
-    seg.appLink = buildAppUrl(report.bvid, seg.start);
+    seg.link = buildUrl(report.url, seg.start, part);
+    seg.appLink = buildAppUrl(report.bvid, seg.start, part);
     seg.timeLabel = formatTime(seg.start);
     seg.endLabel = seg.end ? formatTime(seg.end) : null;
   }
@@ -250,11 +274,30 @@ function collectKnownNames(reports) {
   return map;
 }
 
+/**
+ * 同一视频每个 P 一条记录，所以去重键是 bvid + part（不是 bvid）。
+ * 上游标记 duplicate 的行只有在同键记录已经出现时才被跳过，保证不会丢数据。
+ */
+function dedupeReports(reports) {
+  const seen = new Set();
+  const out = [];
+  for (const report of reports || []) {
+    if (!report || !report.report) continue;
+    const key = `${report.bvid || report.url || ''}|${resolvePart(report).part}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(report);
+  }
+  return out;
+}
+
 /* 浏览器里没有 module，直接挂到全局；Node 里正常导出 */
 const API = {
   parseReport,
   parseNameFixes,
   collectKnownNames,
+  dedupeReports,
+  resolvePart,
   extractStreamer,
   extractDate,
   formatTime,
