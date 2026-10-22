@@ -75,6 +75,27 @@ button.danger:hover { background: #7f241d; }
 .hint code { background: var(--accent-tint); color: var(--accent-deep); padding: 2px 6px; border-radius: 5px; }
 .check { font-size: 13px; color: var(--text); }
 
+/* cookies card: file picker + pasted header */
+input[type="file"] {
+  background: var(--card);
+  border: 1px dashed var(--border-strong);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 13px;
+  color: var(--text);
+}
+textarea {
+  background: var(--card);
+  border: 1px solid var(--border-strong);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-family: inherit;
+  width: 100%;
+}
+textarea:focus { outline: none; border-color: var(--accent); }
+
 /* service settings card: two columns of label + input */
 .cfg-grid {
   display: grid;
@@ -128,6 +149,7 @@ button.danger:hover { background: #7f241d; }
 .job .title { flex: 1; }
 .job .status { font-size: 11px; }
 .status.pending { color: var(--muted); }
+.status.ready { color: var(--muted); }
 .status.running { color: var(--warn); }
 .status.done { color: var(--ok); }
 .status.error { color: var(--err); }
