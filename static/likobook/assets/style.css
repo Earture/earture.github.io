@@ -268,3 +268,19 @@ a.ghost:hover { color: var(--accent-deep); border-color: var(--accent-soft); }
 .report-card[hidden] { display: none; }
 header .meta { color: var(--muted); font-size: 12px; margin: 6px 0 0; }
 main .report p { margin: 8px 0; }
+/* title banner from the project root: centered at the very top of every page */
+.hero { display: flex; justify-content: center; padding: 18px 24px 0; }
+.hero img { display: block; max-width: min(760px, 100%); height: auto; border-radius: 12px; box-shadow: var(--shadow); }
+/* the links above the page become real buttons: bigger tap target, clear border */
+.nav { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0 0; }
+.nav a {
+  display: inline-flex; align-items: center; gap: 6px;
+  min-height: 36px; padding: 9px 16px;
+  border: 1px solid var(--border-strong); border-radius: 10px;
+  background: var(--card); color: var(--accent-deep);
+  font-size: 13px; font-weight: 600; text-decoration: none;
+  box-shadow: var(--shadow);
+}
+.nav a:hover { background: var(--accent-tint); border-color: var(--accent); }
+.nav a.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.nav a.primary:hover { background: var(--accent-deep); color: #fff; }
