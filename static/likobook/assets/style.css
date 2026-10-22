@@ -266,13 +266,17 @@ a.ghost:hover { color: var(--accent-deep); border-color: var(--accent-soft); }
 /* exported report library: full transcript pages need no scrolling cap */
 .timeline.full { max-height: none; }
 .report-card[hidden] { display: none; }
-header .meta { color: var(--muted); font-size: 12px; margin: 6px 0 0; }
 main .report p { margin: 8px 0; }
+/* the banner, the title, the buttons and the tags all share the content column
+ * (main is max-width 960px), so widening the window centers them instead of
+ * leaving them pinned to the left edge */
+header { max-width: 960px; margin: 0 auto; padding: 18px 24px 6px; text-align: center; }
+header .meta { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; color: var(--muted); font-size: 12px; margin: 10px 0 0; }
 /* title banner from the project root: centered at the very top of every page */
-.hero { display: flex; justify-content: center; padding: 18px 24px 0; }
+.hero { display: flex; justify-content: center; max-width: 960px; margin: 0 auto; padding: 18px 24px 0; }
 .hero img { display: block; max-width: min(760px, 100%); height: auto; border-radius: 12px; box-shadow: var(--shadow); }
 /* the links above the page become real buttons: bigger tap target, clear border */
-.nav { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0 0; }
+.nav { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin: 12px 0 0; }
 .nav a {
   display: inline-flex; align-items: center; gap: 6px;
   min-height: 36px; padding: 9px 16px;
