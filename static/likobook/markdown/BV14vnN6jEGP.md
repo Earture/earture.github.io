@@ -1,7 +1,7 @@
 # 莉蔻Liko  旅游后做做周表 (2026-10-20直播录像)
 
 来源: https://www.bilibili.com/video/BV14vnN6jEGP
-主播: 莉蔻Liko
+主播: 莉蔻
 生成时间: 10/22/2026, 1:43:37 PM
 
 ## 一、直播内容详细总结

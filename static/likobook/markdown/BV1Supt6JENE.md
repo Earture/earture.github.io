@@ -1,7 +1,7 @@
 # 莉蔻Liko  睡过头了…… (2026-10-09直播录像)
 
 来源: https://www.bilibili.com/video/BV1Supt6JENE
-主播: 牧场草原神official
+主播: 莉蔻
 生成时间: 10/21/2026, 10:45:21 AM
 
 ## 一、直播内容详细总结

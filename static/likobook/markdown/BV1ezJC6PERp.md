@@ -1,7 +1,7 @@
 # 【克罗雅Kloa】【弹幕】滑跪…— 26.10.15直播回放
 
 来源: https://www.bilibili.com/video/BV1ezJC6PERp
-主播: 小海獭kiku
+主播: 克罗雅
 生成时间: 10/21/2026, 11:11:56 AM
 
 ## 一、直播内容详细总结

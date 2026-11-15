@@ -1,7 +1,7 @@
 # 莉蔻Liko  旅游第一天～ (2026-10-16直播录像)
 
 来源: https://www.bilibili.com/video/BV1qXJQ64EA6
-主播: 牧场草原神official
+主播: 莉蔻
 生成时间: 10/20/2026, 1:40:35 AM
 
 ## 一、直播内容详细总结

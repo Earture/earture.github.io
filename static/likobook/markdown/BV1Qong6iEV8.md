@@ -1,7 +1,7 @@
 # 莉蔻Liko  化妆电台 (2026-10-18直播录像)
 
 来源: https://www.bilibili.com/video/BV1Qong6iEV8
-主播: 牧场草原神official
+主播: 莉蔻
 生成时间: 10/21/2026, 11:11:57 AM
 
 ## 一、直播内容详细总结

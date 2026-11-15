@@ -1,7 +1,7 @@
 # 【克罗雅Kloa】【无弹幕】mac测试— 26.10.15直播回放
 
 来源: https://www.bilibili.com/video/BV1gaJ26iEfz
-主播: 小海獭kiku
+主播: 克罗雅
 生成时间: 10/21/2026, 11:11:57 AM
 
 ## 一、直播内容详细总结

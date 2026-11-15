@@ -1,7 +1,7 @@
 # 克罗雅Kloa 上海repo~— 2026-10-20 直播录像
 
 来源: https://www.bilibili.com/video/BV1XWnz6QEeh
-主播: 映像仓库
+主播: 克罗雅
 生成时间: 10/22/2026, 1:43:35 PM
 
 ## 一、直播内容详细总结

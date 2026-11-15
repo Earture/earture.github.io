@@ -1,7 +1,7 @@
 # 莉蔻Liko  早呀宝贝们！ (2026-10-20直播录像)
 
 来源: https://www.bilibili.com/video/BV1Zbnw6XE4f
-主播: 牧场草原神official
+主播: 莉蔻
 生成时间: 10/21/2026, 1:32:25 PM
 
 ## 一、直播内容详细总结
