@@ -210,6 +210,10 @@ details pre {
 .tl-row .ts { color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; }
 .tl-row .speaker { color: var(--muted); font-size: 11px; }
 .tl-text { color: var(--text-soft); }
+/* a stretch with no speech: one row, muted, instead of a wall of empty rows */
+.tl-row.silence { color: var(--muted); }
+.tl-row.silence .ts { color: var(--muted); font-weight: 400; }
+.tl-row.silence .tl-text { color: var(--muted); font-style: italic; }
 
 /* inline transcript panel on the report library page */
 .transcript-panel {
