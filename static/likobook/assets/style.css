@@ -154,6 +154,9 @@ textarea:focus { outline: none; border-color: var(--accent); }
 .status.done { color: var(--ok); }
 .status.error { color: var(--err); }
 .status.cancelled { color: var(--muted); text-decoration: line-through; }
+/* task-list pagination: page buttons plus a short summary of what is on the list */
+.pager { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+.pager button[disabled] { opacity: .45; cursor: default; }
 
 .meta { color: var(--muted); font-size: 12px; margin-bottom: 10px; }
 .report {
@@ -288,3 +291,6 @@ header .meta { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center
 .nav a:hover { background: var(--accent-tint); border-color: var(--accent); }
 .nav a.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
 .nav a.primary:hover { background: var(--accent-deep); color: #fff; }
+/* one colour per persona: the hue is derived from the name in staticsite.js and
+   written inline on the tag, so a new streamer is coloured without editing CSS */
+.tag.persona { font-weight: 600; }

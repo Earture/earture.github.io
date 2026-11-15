@@ -1,12 +1,12 @@
 # 录播报告库（静态导出）
 
-生成时间: 11/15/2026, 4:40:30 PM
+生成时间: 11/15/2026, 5:00:02 PM
 报告数: 100
 
 整个目录可以直接上传到任何静态托管（GitHub Pages / Cloudflare Pages / nginx / 对象存储），
 不需要后端：
 
-- `index.html` 报告库首页（带搜索)
+- `index.html` 报告库首页（按生成时间排序，带搜索)
 - `reports/BVxxxx.html` 每份报告的页面：报告全文 + 带时间戳的转录
 - `markdown/BVxxxx.md` 原始 Markdown
 - `assets/` 样式、搜索脚本与标题图
